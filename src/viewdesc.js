@@ -936,6 +936,7 @@ class ViewTreeUpdater {
       if (this.index < this.top.children.length && this.top.children[this.index].matchesHack()) {
         this.index++
       } else {
+        if (lastChild && lastChild.dom && lastChild.dom.nodeName === 'BR') return
         let dom = document.createElement("br")
         this.top.children.splice(this.index++, 0, new BRHackViewDesc(this.top, nothing, dom, null))
         this.changed = true
